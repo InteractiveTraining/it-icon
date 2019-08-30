@@ -4,7 +4,7 @@
 [codepen.io](https://codepen.io/adamlacombe/pen/yLBoJda)
 
 ```html 
-<script src="https://unpkg.com/@interactivetraining/icons@0.0.1/dist/it-icon.js"></script>
+<script src="https://unpkg.com/@interactivetraining/icons@latest/dist/it-icon.js"></script>
 
 <it-icon name="api"></it-icon>
 <it-icon name="consulting" size="small"></it-icon>
@@ -18,11 +18,13 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                             | Default     |
-| -------- | --------- | ----------- | -------------------------------- | ----------- |
-| `name`   | `name`    |             | `string`                         | `undefined` |
-| `size`   | `size`    |             | `"large" \| "medium" \| "small"` | `undefined` |
-| `src`    | `src`     |             | `string`                         | `undefined` |
+| Property         | Attribute         | Description | Type                                                                                                                                                                                                                  | Default     |
+| ---------------- | ----------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `color`          | `color`           |             | `"danger" \| "dark" \| "light" \| "medium" \| "primary" \| "secondary" \| "success" \| "tertiary" \| "warning"`                                                                                                       | `'primary'` |
+| `name`           | `name`            |             | `"api" \| "consulting" \| "course-conversion" \| "course-developement" \| "custom-solutions" \| "digital-tools" \| "gamification" \| "launch-tools" \| "offline-remote" \| "polls" \| "reporting" \| "scorm-hosting"` | `undefined` |
+| `secondaryColor` | `secondary-color` |             | `"danger" \| "dark" \| "light" \| "medium" \| "primary" \| "secondary" \| "success" \| "tertiary" \| "warning"`                                                                                                       | `'dark'`    |
+| `size`           | `size`            |             | `"large" \| "medium" \| "small"`                                                                                                                                                                                      | `undefined` |
+| `src`            | `src`             |             | `string`                                                                                                                                                                                                              | `undefined` |
 
 
 ----------------------------------------------

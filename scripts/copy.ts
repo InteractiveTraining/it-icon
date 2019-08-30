@@ -11,3 +11,15 @@ fs.emptyDirSync(collectionSvgsDir);
 
 fs.copySync(optimizedSvgsDir, collectionSvgsDir);
 fs.copySync(optimizedSvgsDir, componentSvgsDir, {overwrite: true});
+
+
+let interfaceValue = '';
+const svgFiles = fs.readdirSync(optimizedSvgsDir);
+svgFiles.map(file => file.split('.')[0]).map((name, key) => {
+  interfaceValue += `'${name}'${(svgFiles.length - 1 !== key) ? ` | ` : ''}`;
+});
+
+let iconNameInterface = `export type  IItIconName = ${interfaceValue};
+export type IItIconColors = 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger' | 'light' | 'medium' | 'dark';`;
+
+fs.writeFileSync(path.join(__dirname, '..', 'src', 'components', 'icon', 'interfaces.ts'), iconNameInterface);

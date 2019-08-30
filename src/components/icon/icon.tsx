@@ -1,4 +1,5 @@
 import {Component, Element, getAssetPath, h, Host, Prop, State, Watch} from '@stencil/core';
+import {IItIconColors, IItIconName} from './interfaces';
 
 // https://github.com/ionic-team/ionicons
 
@@ -11,9 +12,11 @@ import {Component, Element, getAssetPath, h, Host, Prop, State, Watch} from '@st
 export class Icon {
   @Element() el!: HTMLElement;
   
-  @Prop() name?: string;
+  @Prop() name: IItIconName;
   @Prop() src?: string;
   @Prop() size?: 'small' | 'medium' | 'large';
+  @Prop() color: IItIconColors = 'primary';
+  @Prop() secondaryColor: IItIconColors = 'dark';
   
   @State() svgContent?: string;
   
@@ -26,10 +29,14 @@ export class Icon {
   private async loadIcon() {
     const url = (this.src) ? this.src : getAssetPath(`svg/${this.name}.svg`);
     if (url) {
-      this.svgContent = await this.getSvgContent(url);
+      const secondaryColor = window.getComputedStyle(document.documentElement).getPropertyValue('--it-color-' + this.secondaryColor);
+      this.svgContent = this.replaceAll(await this.getSvgContent(url), `fill="#333"`, `fill="${secondaryColor}"`);
     }
   }
   
+  private replaceAll(str: string, find: string, replace: string) {
+    return str.replace(new RegExp(find.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1"), 'g'), replace);
+  }
   
   // https://github.com/ionic-team/ionicons/blob/master/src/components/icon/request.ts
   private getSvgContent(url: string) {
@@ -54,7 +61,8 @@ export class Icon {
   
   render() {
     if (this.svgContent) {
-      return <Host role="img" class={{[`icon-${this.size}`]: !!this.size}}>
+      return <Host role="img" class={{[`icon-${this.size}`]: !!this.size}}
+                   style={{fill: `var(--it-color-${this.color})`}}>
         <div class="icon-inner" innerHTML={this.svgContent}/>
       </Host>;
     }

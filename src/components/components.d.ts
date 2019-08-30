@@ -6,11 +6,16 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  IItIconColors,
+  IItIconName,
+} from './icon/interfaces';
 
 export namespace Components {
   interface ItIcon {
-    'name'?: string;
+    'color': IItIconColors;
+    'name': IItIconName;
+    'secondaryColor': IItIconColors;
     'size'?: 'small' | 'medium' | 'large';
     'src'?: string;
   }
@@ -31,7 +36,9 @@ declare global {
 
 declare namespace LocalJSX {
   interface ItIcon extends JSXBase.HTMLAttributes<HTMLItIconElement> {
-    'name'?: string;
+    'color'?: IItIconColors;
+    'name'?: IItIconName;
+    'secondaryColor'?: IItIconColors;
     'size'?: 'small' | 'medium' | 'large';
     'src'?: string;
   }
