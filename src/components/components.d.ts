@@ -16,7 +16,7 @@ export namespace Components {
     'color': IItIconColors;
     'name': IItIconName;
     'secondaryColor': IItIconColors;
-    'size'?: 'small' | 'medium' | 'large';
+    'size'?: 'small' | 'medium' | 'large' | 'x-large';
     'src'?: string;
   }
 }
@@ -39,7 +39,7 @@ declare namespace LocalJSX {
     'color'?: IItIconColors;
     'name'?: IItIconName;
     'secondaryColor'?: IItIconColors;
-    'size'?: 'small' | 'medium' | 'large';
+    'size'?: 'small' | 'medium' | 'large' | 'x-large';
     'src'?: string;
   }
 

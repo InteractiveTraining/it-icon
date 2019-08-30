@@ -14,7 +14,7 @@ export class Icon {
   
   @Prop() name: IItIconName;
   @Prop() src?: string;
-  @Prop() size?: 'small' | 'medium' | 'large';
+  @Prop() size?: 'small' | 'medium' | 'large' | 'x-large';
   @Prop() color: IItIconColors = 'primary';
   @Prop() secondaryColor: IItIconColors = 'dark';
   
