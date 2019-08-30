@@ -1,0 +1,27 @@
+:host {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  contain: strict;
+  fill: currentColor;
+  box-sizing: content-box !important;
+}
+
+.icon-inner, svg {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+:host(.icon-small) {
+  font-size: 0.7em !important;
+}
+
+:host(.icon-medium) {
+  font-size: 1.2em !important;
+}
+
+
+:host(.icon-large) {
+  font-size: 1.8em !important;
+}
