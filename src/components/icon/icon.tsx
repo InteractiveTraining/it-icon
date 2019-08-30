@@ -5,9 +5,9 @@ import {IItIconColors, IItIconName} from './interfaces';
 
 @Component({
   tag: 'it-icon',
-  assetsDir: 'svg',
+  assetsDir: 'it-icons',
   styleUrl: 'icon.scss',
-  shadow: true
+  shadow: true,
 })
 export class Icon {
   @Element() el!: HTMLElement;
@@ -27,7 +27,7 @@ export class Icon {
   @Watch('name')
   @Watch('src')
   private async loadIcon() {
-    const url = (this.src) ? this.src : getAssetPath(`svg/${this.name}.svg`);
+    const url = (this.src) ? this.src : getAssetPath(`it-icons/${this.name}.svg`);
     if (url) {
       const secondaryColor = window.getComputedStyle(document.documentElement).getPropertyValue('--it-color-' + this.secondaryColor);
       this.svgContent = this.replaceAll(await this.getSvgContent(url), `fill="#333"`, `fill="${secondaryColor}"`);

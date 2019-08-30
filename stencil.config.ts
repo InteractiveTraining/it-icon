@@ -10,24 +10,16 @@ export const config: Config = {
   ],
   outputTargets: [
     {
-      type: 'dist'
+      type: 'dist',
     },
     {
       type: 'docs-readme'
     },
     {
       type: 'www',
-      copy: [
-        {
-          src: '../svg/',
-          dest: './build/svg/',
-          keepDirStructure: true
-        }
-      ],
       serviceWorker: null
     }
   ],
-  
   devServer: {
     openBrowser: false,
   },

@@ -1,6 +1,6 @@
 {
   "name": "@interactivetraining/icons",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "IT icon component",
   "main": "dist/index.js",
   "types": "dist/types/components.d.ts",
@@ -10,10 +10,9 @@
     "dist/"
   ],
   "scripts": {
-    "build": "stencil build --docs && npm run copy && cp ./src/components/icon/readme.md ./README.md",
+    "build": "stencil build --docs && cp ./src/components/icon/readme.md ./README.md",
     "npmjs.publish": "npm publish --@interactivetraining:registry=https://registry.npmjs.org/ --access public",
-    "start": "mkdir -p ./www/build/ && cp -R ./src/svg/ ./www/build/svg/ && stencil build --dev --watch --serve",
-    "copy": "ts-node -P ./scripts.tsconfig.json ./scripts/copy.ts"
+    "start": "stencil build --dev --watch --serve"
   },
   "dependencies": {},
   "devDependencies": {
