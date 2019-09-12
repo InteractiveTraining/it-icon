@@ -1,6 +1,6 @@
 {
   "name": "@interactivetraining/icons",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "IT icon component",
   "main": "dist/index.js",
   "types": "dist/types/components.d.ts",

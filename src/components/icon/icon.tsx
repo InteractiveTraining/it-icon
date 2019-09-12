@@ -7,7 +7,7 @@ import {IItIconColors, IItIconName} from './interfaces';
   tag: 'it-icon',
   assetsDir: 'it-icons',
   styleUrl: 'icon.scss',
-  shadow: true,
+  shadow: true
 })
 export class Icon {
   @Element() el!: HTMLElement;
@@ -15,8 +15,8 @@ export class Icon {
   @Prop() name: IItIconName;
   @Prop() src?: string;
   @Prop() size?: 'small' | 'medium' | 'large' | 'x-large';
-  @Prop() color: IItIconColors = 'primary';
-  @Prop() secondaryColor: IItIconColors = 'dark';
+  @Prop() color: IItIconColors;
+  @Prop() secondaryColor: IItIconColors;
   
   @State() svgContent?: string;
   
@@ -26,10 +26,11 @@ export class Icon {
   
   @Watch('name')
   @Watch('src')
+  @Watch('secondaryColor')
   private async loadIcon() {
     const url = (this.src) ? this.src : getAssetPath(`it-icons/${this.name}.svg`);
     if (url) {
-      const secondaryColor = window.getComputedStyle(document.documentElement).getPropertyValue('--it-color-' + this.secondaryColor);
+      const secondaryColor = (this.secondaryColor) ? window.getComputedStyle(document.documentElement).getPropertyValue('--it-color-' + this.secondaryColor) : window.getComputedStyle(this.el.parentElement).color;
       this.svgContent = this.replaceAll(await this.getSvgContent(url), `fill="#333"`, `fill="${secondaryColor}"`);
     }
   }
@@ -62,7 +63,7 @@ export class Icon {
   render() {
     if (this.svgContent) {
       return <Host role="img" class={{[`icon-${this.size}`]: !!this.size}}
-                   style={{fill: `var(--it-color-${this.color})`}}>
+                   style={{fill: (this.color) ? `var(--it-color-${this.color})` : `currentColor`}}>
         <div class="icon-inner" innerHTML={this.svgContent}/>
       </Host>;
     }
